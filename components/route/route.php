@@ -83,7 +83,7 @@ class Route
     {
         $bFound = false;
         foreach($this->getRotas() as $oRoute) {
-            if ($oRoute->getPath() == $this->getUrl()) {
+            if ($oRoute->getPath() == $this->getCleanUrl($this->getUrl())) {
                 $bFound = true;
                 $oSubject = $oRoute->getController();
                 $sMethod = $oRoute->getMethod();
@@ -99,6 +99,14 @@ class Route
         }
 
         return true;
+    }
+
+    /**
+     * Retorna a url sem os parametros GET
+     */
+    private function getCleanUrl($sUrl) {
+        $aExplode = explode('?', $sUrl);
+        return reset($aExplode);
     }
 
     /**
