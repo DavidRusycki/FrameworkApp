@@ -23,6 +23,7 @@ class ControllerBase implements interfaceController
      */
     public function redirect() 
     {
+        $this->getApp()->getRoute()->setUrl($_SERVER["REQUEST_URI"]);
         $this->getApp()->getRoute()->goToRoute();
     }
 

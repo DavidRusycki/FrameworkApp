@@ -6,5 +6,6 @@ use Components\Route\Route;
  */
 
 Route::getInstance()->define([
-    Route::add('inicial/', [new App\Controller\ControllerConsulta(), 'iniciaConsulta'])
+    Route::add('/frameworkApp/', [new App\Controller\ControllerConsulta('1 esse é o prieiro'), 'iniciaConsulta']),
+    Route::add('/frameworkApp/inicial', [new App\Controller\ControllerConsulta('2 esse não é o prieiro'), 'iniciaConsulta'])
 ]);

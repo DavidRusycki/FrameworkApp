@@ -9,7 +9,7 @@ use Exception;
 class Route  
 {
     
-    private self $instance;
+    private static self $instance;
     private array $rotas = [];
 
     private string $path;
@@ -31,8 +31,8 @@ class Route
     /**
      * Valida as informações passadas.
      */
-    private function validaInfos() {
-        if (!is_object(reset($aInfo)) || !is_string(end($aInfos)) || !method_exists(reset($aInfo), end($aInfos)) || !count($aInfos) == 2) {
+    private function validaInfos($aInfos) {
+        if (!is_object(reset($aInfos)) || !is_string(end($aInfos)) || !method_exists(reset($aInfos), end($aInfos)) || !count($aInfos) == 2) {
             throw new Exception('Verifique as informações de rota.');
         }
         return true;
@@ -43,7 +43,7 @@ class Route
      */
     public function loadRoutes() 
     {
-        require_once('../../directions.php');
+        require_once('.\directions.php');
     }
 
     /**
