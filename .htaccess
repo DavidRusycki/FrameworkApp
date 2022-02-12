@@ -1,0 +1,15 @@
+
+# Ativar a engine de reescrita
+RewriteEngine on
+
+# Se NÃO for um arquivo executar as regras
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Se NÃO for um diretório executar as regras
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona para start.php se antender as condições acima
+RewriteRule ^(.*)$ ./start.php
+
+# Direciona o Index para o start.php
+DirectoryIndex ./start.php
